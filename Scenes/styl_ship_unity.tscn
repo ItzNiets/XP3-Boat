@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://mdabtq4d5hv2"]
+
+[ext_resource type="PackedScene" uid="uid://c5ebhmfvu0bqb" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_3dModel/StylShip_Unity.fbx" id="1_vmyh8"]
+[ext_resource type="Texture2D" uid="uid://y66ocyr68qo2" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_Decks_AlbedoTransparency.png" id="4_pun23"]
+[ext_resource type="Texture2D" uid="uid://dgojrylr5cr6o" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_Masts_AlbedoTransparency.png" id="5_4x12h"]
+[ext_resource type="Texture2D" uid="uid://skag34cbcv0r" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_SailsRope_AlbedoTransparency.png" id="6_p7wds"]
+[ext_resource type="Texture2D" uid="uid://0ddw8g480f0b" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_Props_AlbedoTransparency.png" id="9_4mt4v"]
+[ext_resource type="Material" uid="uid://dqj1o1hkmk75s" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/Elements.tres" id="mat_Elements"]
+[ext_resource type="Material" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/SailsRope.tres" id="mat_SailsRope"]
+[ext_resource type="Material" uid="uid://wluljxrtkkal" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/ShipHull.tres" id="mat_ShipHull"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7kti"]
+albedo_texture = ExtResource("4_pun23")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mt4v"]
+albedo_texture = ExtResource("4_pun23")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pun23"]
+albedo_texture = ExtResource("4_pun23")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4x12h"]
+albedo_texture = ExtResource("4_pun23")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7wds"]
+albedo_texture = ExtResource("5_4x12h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vusu"]
+albedo_texture = ExtResource("6_p7wds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ondtb"]
+albedo_texture = ExtResource("5_4x12h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ersum"]
+albedo_texture = ExtResource("6_p7wds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pshvb"]
+albedo_texture = ExtResource("6_p7wds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfdk0"]
+albedo_texture = ExtResource("5_4x12h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ikyp"]
+albedo_texture = ExtResource("6_p7wds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8aw0w"]
+albedo_texture = ExtResource("6_p7wds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gryw6"]
+albedo_texture = ExtResource("6_p7wds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8bpl"]
+albedo_texture = ExtResource("6_p7wds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gnev"]
+albedo_texture = ExtResource("9_4mt4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evbti"]
+albedo_texture = ExtResource("9_4mt4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ae1t"]
+albedo_texture = ExtResource("9_4mt4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrtpd"]
+albedo_texture = ExtResource("9_4mt4v")
+
+[node name="StylShip_Unity" unique_id=587510060 instance=ExtResource("1_vmyh8")]
+
+[node name="StylShip_Anchor" parent="." index="0" unique_id=2110257909]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Body" parent="." index="1" unique_id=1636122490]
+material_override = ExtResource("mat_ShipHull")
+
+[node name="StylShip_Bracing" parent="." index="2" unique_id=2036832965]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Support" parent="." index="3" unique_id=824248816]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_FencingBack" parent="." index="4" unique_id=259553485]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_FencingFront" parent="." index="5" unique_id=359646486]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_FencingMid" parent="." index="6" unique_id=579717513]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_FloorBackBottom" parent="." index="7" unique_id=1174306647]
+material_override = SubResource("StandardMaterial3D_s7kti")
+
+[node name="StylShip_FloorBackTop" parent="." index="8" unique_id=1818700440]
+material_override = SubResource("StandardMaterial3D_4mt4v")
+
+[node name="StylShip_FloorFront" parent="." index="9" unique_id=534371583]
+material_override = SubResource("StandardMaterial3D_pun23")
+
+[node name="StylShip_FloorMid" parent="." index="10" unique_id=50976337]
+material_override = SubResource("StandardMaterial3D_4x12h")
+
+[node name="StylShip_Loopholes" parent="." index="11" unique_id=990291803]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_LoopholeCap1_left" parent="." index="12" unique_id=576706796]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_MastBack" parent="." index="13" unique_id=140388309]
+material_override = SubResource("StandardMaterial3D_p7wds")
+
+[node name="StylShip_Prow" parent="." index="14" unique_id=1424415955]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Rudder" parent="." index="15" unique_id=539003583]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_SailBack" parent="." index="16" unique_id=1215859978]
+material_override = SubResource("StandardMaterial3D_0vusu")
+
+[node name="StylShip_StairsBot" parent="." index="17" unique_id=1368159814]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_StairsSmall" parent="." index="18" unique_id=1921421565]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_StairsTop" parent="." index="19" unique_id=1073602318]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Wall" parent="." index="20" unique_id=1597078412]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip" parent="StylShip" parent_id_path=PackedInt32Array(148254379) index="0" unique_id=102046312]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_WheelStand" parent="." index="22" unique_id=1915434953]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Windows" parent="." index="23" unique_id=371936610]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_MastFront" parent="." index="25" unique_id=609923987]
+material_override = SubResource("StandardMaterial3D_ondtb")
+
+[node name="StylShip_SailMid2" parent="." index="26" unique_id=2066719879]
+material_override = SubResource("StandardMaterial3D_ersum")
+
+[node name="StylShip_MainFlag" parent="." index="27" unique_id=1165896342]
+material_override = SubResource("StandardMaterial3D_pshvb")
+
+[node name="StylShip_MastMid" parent="." index="28" unique_id=1930855587]
+material_override = SubResource("StandardMaterial3D_lfdk0")
+
+[node name="StylShip_SailMid1" parent="." index="29" unique_id=1114360280]
+material_override = SubResource("StandardMaterial3D_6ikyp")
+
+[node name="StylShip_SailFront" parent="." index="30" unique_id=1414689582]
+material_override = SubResource("StandardMaterial3D_8aw0w")
+
+[node name="StylShip_WireFront" parent="." index="33" unique_id=1755427827]
+material_override = ExtResource("mat_SailsRope")
+
+[node name="StylShip_Flag1" parent="." index="34" unique_id=960720655]
+material_override = SubResource("StandardMaterial3D_gryw6")
+
+[node name="StylShip_Flag2" parent="." index="35" unique_id=1169538517]
+material_override = SubResource("StandardMaterial3D_l8bpl")
+
+[node name="StylShip_LoopholeCap1_right" parent="." index="36" unique_id=1968298115]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_LoopholeCap2_right" parent="." index="37" unique_id=1493112734]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_LoopholeCap2_left" parent="." index="38" unique_id=1298615035]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_LoopholeCap3_left" parent="." index="39" unique_id=1364743270]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_LoopholeCap3_right" parent="." index="40" unique_id=781328317]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Door1" parent="." index="41" unique_id=1173631799]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Door2" parent="." index="42" unique_id=1894367139]
+material_override = ExtResource("mat_Elements")
+
+[node name="StylShip_Barrel" parent="." index="43" unique_id=1004623073]
+transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, -2.2320411, -7.5889616, -12.179608)
+material_override = SubResource("StandardMaterial3D_2gnev")
+
+[node name="StylShip_Pallet" parent="." index="44" unique_id=1986843935]
+transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, 0.547565, -8.1206, -9.615959)
+material_override = SubResource("StandardMaterial3D_evbti")
+
+[node name="StylShip_Cannon" parent="." index="45" unique_id=2044152068]
+transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, 0.5893425, -7.6360254, -11.9669285)
+material_override = SubResource("StandardMaterial3D_5ae1t")
+
+[node name="StylShip_Box" parent="." index="46" unique_id=2059604960]
+transform = Transform3D(1, 0, 0, 0, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.1310463, -7.8076077, -11.739463)
+material_override = SubResource("StandardMaterial3D_wrtpd")

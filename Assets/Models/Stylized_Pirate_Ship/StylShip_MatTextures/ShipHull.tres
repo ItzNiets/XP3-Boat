@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://wluljxrtkkal"]
+
+[ext_resource type="Texture2D" uid="uid://bd05fockp6yhy" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_ShipHull_AlbedoTransparency.png" id="1_albedo"]
+[ext_resource type="Texture2D" uid="uid://dy3swofapv6hi" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_ShipHull_AmbientOcclusion.png" id="2_ao"]
+[ext_resource type="Texture2D" uid="uid://cefnxvqtbgpjo" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_ShipHull_MetallicSmoothness.png" id="3_metallic"]
+[ext_resource type="Texture2D" uid="uid://detvi5r1la7ge" path="res://Assets/Models/Stylized_Pirate_Ship/StylShip_MatTextures/StylShip_ShipHull_NormalOpenGL.png" id="4_normal"]
+
+[resource]
+albedo_texture = ExtResource("1_albedo")
+metallic = 1.0
+metallic_texture = ExtResource("3_metallic")
+normal_enabled = true
+normal_texture = ExtResource("4_normal")
+ao_enabled = true
+ao_texture = ExtResource("2_ao")

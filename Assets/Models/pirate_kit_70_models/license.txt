@@ -1,0 +1,8 @@
+Model Information:
+* title:	Pirate Kit (70+ Models)
+* source:	https://sketchfab.com/3d-models/pirate-kit-70-models-52af2bc5ac5846ff84a0d671b897c0a2
+* author:	quaternius (https://sketchfab.com/quaternius)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
