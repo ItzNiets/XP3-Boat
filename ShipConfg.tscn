@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5udd1ncktdba"]
+
+[ext_resource type="Script" uid="uid://de3hfj3eaw3lc" path="res://Script/ShipBuoyancy.gd" id="1_53cj6"]
+[ext_resource type="PackedScene" uid="uid://mdabtq4d5hv2" path="res://Scenes/styl_ship_unity.tscn" id="2_duerj"]
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_r1uon"]
+
+[node name="NodeShip" type="Node3D"]
+script = ExtResource("1_53cj6")
+
+[node name="ShipContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.181337, 0)
+
+[node name="StylShip_Unity" parent="ShipContainer" instance=ExtResource("2_duerj")]
+transform = Transform3D(1.4862959, 0, 0, 0, 1, 0, 0, 0, 1, 0.3803978, 1.4964209, -0.52832794)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ShipContainer"]
+
+[node name="ColisionShapeMar" type="CollisionShape3D" parent="ShipContainer/StaticBody3D"]
+transform = Transform3D(45.78927, 0, 0, 0, 50, 0, 0, 0, 69.5717, 0, -2.3324652, 0)
+shape = SubResource("HeightMapShape3D_r1uon")

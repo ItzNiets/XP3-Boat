@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://1t44ynfnoxcs"]
+
+[ext_resource type="Script" uid="uid://bmgtu0j8n6nif" path="res://gui.gd" id="1_0v7bq"]
+[ext_resource type="Texture2D" uid="uid://bpeet7yx2epnc" path="res://bala de canhao png certo.png" id="1_q7530"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0v7bq")
+
+[node name="GuiMuniçao" type="CanvasLayer" parent="."]
+
+[node name="container_balas" type="HBoxContainer" parent="GuiMuniçao"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -306.0
+offset_top = 8.000002
+offset_right = 1220.0
+offset_bottom = 408.0
+grow_horizontal = 0
+scale = Vector2(0.2, 0.182)
+alignment = 1
+
+[node name="Bala1" type="TextureRect" parent="GuiMuniçao/container_balas"]
+layout_mode = 2
+texture = ExtResource("1_q7530")
+expand_mode = 3
+
+[node name="Bala2" type="TextureRect" parent="GuiMuniçao/container_balas"]
+layout_mode = 2
+texture = ExtResource("1_q7530")
+
+[node name="Bala3" type="TextureRect" parent="GuiMuniçao/container_balas"]
+layout_mode = 2
+texture = ExtResource("1_q7530")

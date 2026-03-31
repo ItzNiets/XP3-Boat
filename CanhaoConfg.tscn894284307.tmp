@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://de5mgdt6xtq2"]
+
+[ext_resource type="Script" uid="uid://bcf0qys0qq5fm" path="res://canhao.gd" id="1_4bvhv"]
+[ext_resource type="PackedScene" uid="uid://bpnn7tfg4xpn8" path="res://bullet_config.tscn" id="2_iiwgr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iiwgr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iiwgr"]
+
+[node name="NodeCanhao" type="Node3D"]
+
+[node name="Canhao" type="CharacterBody3D" parent="."]
+script = ExtResource("1_4bvhv")
+bullet_config = ExtResource("2_iiwgr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Canhao"]
+transform = Transform3D(1, 0, 0, 0, 0.009843504, -0.99995154, 0, 0.99995154, 0.009843504, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_iiwgr")
+
+[node name="SpawnPoint" type="Marker3D" parent="Canhao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9533833)
+
+[node name="TriggerAreaCanhao" type="Area3D" parent="Canhao"]
+transform = Transform3D(1.3058474, 0, 0, 0, 1.1269444, 0, 0, 0, 1.9206333, 0, 0, 0.01235199)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Canhao/TriggerAreaCanhao"]
+transform = Transform3D(1.0256517, 0, 0, 0, 1.2900801, 0, 0, 0, 1.2215732, 0, 0, -0.013099015)
+shape = SubResource("SphereShape3D_iiwgr")
