@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyl5cjdrtkdx3"]
+[gd_scene load_steps=19 format=3 uid="uid://dyl5cjdrtkdx3"]
 
 [ext_resource type="Script" uid="uid://dbqh0kwgsp6il" path="res://Script/Water.gd" id="2_water"]
 [ext_resource type="PackedScene" uid="uid://c5udd1ncktdba" path="res://ShipConfg.tscn" id="3_q2d71"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://uajluw4wy8lo" path="res://canhaoB.gd" id="9_op4cu"]
 [ext_resource type="AudioStream" uid="uid://cr7g106yj0bu3" path="res://Assets/Audio/Sounds/Wind Sounds For Sleeping Wind Sound Effect For Relaxation Study Insomina Tinnitus 10 Minutes [GFABlcMkoPA].mp3" id="9_wind"]
 [ext_resource type="PackedScene" uid="uid://btetkdrfkd3nt" path="res://bullet_configB.tscn" id="10_op4cu"]
+[ext_resource type="PackedScene" uid="uid://bw8sjs85qgdol" path="res://node_timao.tscn" id="11_kwl8l"]
 [ext_resource type="PackedScene" uid="uid://1t44ynfnoxcs" path="res://GUI.tscn" id="14_8l3nt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cartoon"]
@@ -97,6 +98,9 @@ bullet_config = ExtResource("10_op4cu")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, 6.8817677)
 script = ExtResource("9_op4cu")
 bullet_config = ExtResource("10_op4cu")
+
+[node name="NodeTimao" parent="NodeShip" instance=ExtResource("11_kwl8l")]
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 3.0305817, 0, 8.742277e-08, 0, -0.9999999, -0.7899308, 7.515558, 1.6522133)
 
 [node name="AmbientAudio" type="Node" parent="."]
 script = ExtResource("7_ambient")

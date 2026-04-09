@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw8sjs85qgdol"]
+
+[ext_resource type="Script" uid="uid://btjbfowykn41e" path="res://node_timao.gd" id="1_3bl8w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a2ewk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3bl8w"]
+
+[node name="NodeTimao" type="Node3D"]
+script = ExtResource("1_3bl8w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_a2ewk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_3bl8w")
+
+[node name="Marker3D" type="Marker3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5472826, 0.52925384)
+
+[node name="AreaTimao" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/AreaTimao"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_3bl8w")
