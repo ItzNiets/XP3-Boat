@@ -9,7 +9,7 @@ var player_referencia = null
 
 # --- CONFIGURAÇÕES DE GIRO HORIZONTAL (Y) ---
 var velocidade_giro = 2.0
-var angulo_h = 90.0   # Ângulo inicial (ajuste conforme seu editor)
+var angulo_h = 90.0   
 var limite_esq = 30.0    
 var limite_dir = 150.0   
 
@@ -20,7 +20,7 @@ var limite_cima = 25.0  # Máximo para o céu
 var limite_baixo = -10.0 # Máximo para o mar
 
 func _process(_delta):
-	# SÓ ENTRA AQUI SE O PLAYER ESTIVER NO CONTROLE
+	
 	if esta_operando:
 
 		# --- CONTROLE HORIZONTAL (Esquerda/Direita) ---
@@ -51,10 +51,9 @@ func atirar():
 		if player_referencia.tem_municao():
 			var nova_bala = bullet_config.instantiate()
 			
-			# Adiciona na raiz para a física da bala ser independente do canhão
+		
 			get_tree().root.add_child(nova_bala)
-			
-			# O SpawnPointB já carrega a rotação X e Y do canhão
+		
 			nova_bala.global_transform = spawn_point.global_transform
 			
 			player_referencia.gastar_municao()

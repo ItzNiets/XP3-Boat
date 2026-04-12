@@ -15,7 +15,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.181337, 0)
 transform = Transform3D(1.4862959, 0, 0, 0, 1, 0, 0, 0, 1, 0.3803978, 1.4964209, -0.52832794)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ShipContainer"]
+collision_mask = 3
 
 [node name="ColisionShapeMar" type="CollisionShape3D" parent="ShipContainer/StaticBody3D"]
-transform = Transform3D(45.78927, 0, 0, 0, 50, 0, 0, 0, 69.5717, 0, -2.3324652, 0)
+transform = Transform3D(55, 0, 0, 0, 55, 0, 0, 0, 55, 0, -2.3324652, 0)
 shape = SubResource("HeightMapShape3D_r1uon")

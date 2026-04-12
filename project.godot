@@ -23,6 +23,10 @@ Manager="*res://manager.gd"
 
 project/assembly_name="Sprite Baals Existe"
 
+[global_group]
+
+player=""
+
 [input]
 
 interagirCanhao={

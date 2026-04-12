@@ -2,8 +2,7 @@ extends Node3D
 
 @export var bullet_config: PackedScene
 @onready var spawn_point = $Canhao/SpawnPoint 
-# Se você tiver um nó separado para o cano, mude para:
-# @onready var cano = $Cano 
+
 
 # --- VARIÁVEIS DE ESTADO ---
 var esta_operando = false
@@ -40,8 +39,7 @@ func _process(_delta):
 		angulo_v += dir_v * velocidade_inclinacao
 		angulo_v = clamp(angulo_v, limite_baixo, limite_cima)
 		
-		# IMPORTANTE: Se o seu SpawnPoint estiver dentro de um nó "Cano", 
-		# rotacione o Cano. Se estiver tudo no mesmo nó, use:
+		
 		rotation_degrees.x = angulo_v 
 
 		# --- TIRO ---
