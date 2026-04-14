@@ -67,42 +67,44 @@ script = ExtResource("5_flycam")
 script = ExtResource("2_water")
 
 [node name="NodeShip" parent="." groups=["player"] instance=ExtResource("3_q2d71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016192436, 0.022723198, -0.0028848648)
 
 [node name="NodePirate" parent="NodeShip" instance=ExtResource("6_kn06e")]
-transform = Transform3D(1.4959875, 0, 0, 0, 2.0963216, 0, 0, 0, -0.8309845, 0, 8.181337, 0)
+transform = Transform3D(1.4959875, 0, 0, 0, 2.0963216, 0, 0, 0, -0.8309845, 0, 13.032095, -18.388073)
 
 [node name="NodeCanhao" parent="NodeShip" instance=ExtResource("6_uo7di")]
-transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, 3.0516343)
+transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, -3.3052068)
 bullet_config = ExtResource("6_7yo87")
 
 [node name="NodeCanhao2" parent="NodeShip" instance=ExtResource("6_uo7di")]
-transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, 6.073119)
+transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, -0.8634901)
 bullet_config = ExtResource("6_7yo87")
 
 [node name="NodeCanhao3" parent="NodeShip" instance=ExtResource("6_uo7di")]
-transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, -0.47377443)
+transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, 1.4626908)
 bullet_config = ExtResource("6_7yo87")
 
 [node name="CaixadeMuniçao" parent="NodeShip" instance=ExtResource("7_kn06e")]
 transform = Transform3D(3.277613, -3.0910938e-22, 0, -2.1175824e-22, 2.9194555, -2.842171e-14, 0, -2.842171e-14, 2.918701, -1.3724957, 6.5910845, -5.648545)
 
 [node name="NodeCanhao4" parent="NodeShip" instance=ExtResource("8_ti1bm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, -0.47377443)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, -3.268714)
 script = ExtResource("9_op4cu")
 bullet_config = ExtResource("10_op4cu")
 
 [node name="NodeCanhao5" parent="NodeShip" instance=ExtResource("8_ti1bm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, 3.3063545)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, -0.5483804)
 script = ExtResource("9_op4cu")
 bullet_config = ExtResource("10_op4cu")
 
 [node name="NodeCanhao6" parent="NodeShip" instance=ExtResource("8_ti1bm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, 6.8817677)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, 2.0679464)
 script = ExtResource("9_op4cu")
 bullet_config = ExtResource("10_op4cu")
 
 [node name="NodeTimao" parent="NodeShip" instance=ExtResource("11_kwl8l")]
-transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 3.0305817, 0, 8.742277e-08, 0, -0.9999999, -0.7899308, 7.515558, 1.6522133)
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 3.0305817, 0, 8.742277e-08, 0, -0.9999999, -1.173565, 11.562407, -12.145747)
+visible = false
 
 [node name="AmbientAudio" type="Node" parent="."]
 script = ExtResource("7_ambient")

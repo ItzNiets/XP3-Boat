@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	var input_dir = Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
-		input_dir = Vector2(0, -1)
+		input_dir = Vector2(0, -2)
 	elif Input.is_action_pressed("ui_down"):
 		input_dir = Vector2(0, 1)
 	elif Input.is_action_pressed("ui_left"):
