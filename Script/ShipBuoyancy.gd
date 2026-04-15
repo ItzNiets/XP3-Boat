@@ -61,7 +61,20 @@ func comando_parar(): velocidade_frente = 0.0
 func comando_virar_fixo(direcao: int): angulo_alvo_y += direcao * (PI / 2.0)
 
 # Dano
+
+	# Dano
 func receber_dano_navio(valor):
+	# Se a vida já estiver <= 0, não faz nada
+	if vida_navio <= 0:
+		return
+		
 	vida_navio -= valor
 	print("Navio: PERDI VIDA! Vida atual: ", vida_navio)
-	if vida_navio <= 0: print("Navio: Afundou!")
+	
+	if vida_navio <= 0:
+		print("Navio: Afundou!")
+		morrer()
+
+func morrer():
+	# Adicione aqui qualquer efeito de partícula ou som antes de deletar
+	queue_free()

@@ -67,10 +67,9 @@ script = ExtResource("5_flycam")
 script = ExtResource("2_water")
 
 [node name="NodeShip" parent="." groups=["player"] instance=ExtResource("3_q2d71")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016192436, 0.022723198, -0.0028848648)
 
 [node name="NodePirate" parent="NodeShip" instance=ExtResource("6_kn06e")]
-transform = Transform3D(1.4959875, 0, 0, 0, 2.0963216, 0, 0, 0, -0.8309845, 0, 13.032095, -18.388073)
+transform = Transform3D(1.4959875, 0, 0, 0, 2.0963216, 0, 0, 0, -0.8309845, 0, 13.032095, -2.501274)
 
 [node name="NodeCanhao" parent="NodeShip" instance=ExtResource("6_uo7di")]
 transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, -3.3052068)
