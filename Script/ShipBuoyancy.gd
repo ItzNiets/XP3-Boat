@@ -8,7 +8,11 @@ var angulo_alvo_y = 0.0
 const VELOCIDADE_GIRO_SUAVE = 1.0 
 
 @export var vida_navio: int = 100
+@export var vida_max: int = 100
 var water: Water
+
+# --- Movimento automático da fase ---
+@export var velocidade_fase := 3.0
 
 # --- FLUTUAÇÃO ---
 @export var water_node_path: NodePath
@@ -28,6 +32,16 @@ func _ready() -> void:
 	if not water:
 		var found = get_tree().current_scene.find_child("WaterPlane", true, false)
 		if found is Water: water = found
+
+	# Conectar aos sinais da fase
+	Manager.fase_iniciada.connect(_on_fase_iniciada)
+	Manager.fase_terminada.connect(_on_fase_terminada)
+
+func _on_fase_iniciada() -> void:
+	velocidade_frente = velocidade_fase
+
+func _on_fase_terminada(_vitoria: bool) -> void:
+	velocidade_frente = 0.0
 
 func _physics_process(delta: float) -> void:
 	if not water: return
@@ -55,26 +69,25 @@ func _physics_process(delta: float) -> void:
 	rotation.x = lerp_angle(rotation.x, pitch, delta * rotation_lerp_speed)
 	rotation.z = lerp_angle(rotation.z, roll, delta * rotation_lerp_speed)
 
-# Comandos
+# Comandos (mantidos para compatibilidade, mas não usados na fase)
 func comando_acelerar(): velocidade_frente = VEL_MAX
 func comando_parar(): velocidade_frente = 0.0
 func comando_virar_fixo(direcao: int): angulo_alvo_y += direcao * (PI / 2.0)
 
 # Dano
-
-	# Dano
 func receber_dano_navio(valor):
-	# Se a vida já estiver <= 0, não faz nada
 	if vida_navio <= 0:
 		return
 		
 	vida_navio -= valor
 	print("Navio: PERDI VIDA! Vida atual: ", vida_navio)
+	Manager.vida_navio_mudou.emit(vida_navio, vida_max)
 	
 	if vida_navio <= 0:
 		print("Navio: Afundou!")
+		Manager.navio_destruido()
 		morrer()
 
 func morrer():
-	# Adicione aqui qualquer efeito de partícula ou som antes de deletar
-	queue_free()
+	# Não deletar o navio imediatamente para permitir a tela de derrota
+	velocidade_frente = 0.0

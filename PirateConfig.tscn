@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://wg8r0e7cbl62"]
 
-[ext_resource type="Script" uid="uid://d2rr6ns17k80e" path="res://pirate.gd" id="1_ofe3y"]
 [ext_resource type="Texture2D" uid="uid://bhtw7m4syeqk4" path="res://Assets/Models/pirate_kit_70_models/textures/Atlas_baseColor.png" id="1_pgd4x"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ofe3y"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofe3y"]
+height = 1.893
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umti0"]
 resource_name = "Atlas"
@@ -78,28 +78,28 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e5c8s")
 
-[node name="NodePirate" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofe3y"]
 
-[node name="Pirate" type="CharacterBody3D" parent="."]
-script = ExtResource("1_ofe3y")
+[node name="Pirate" type="CharacterBody3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pirate"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.26176786, 0.75559866, -0.9888621)
-shape = SubResource("BoxShape3D_ofe3y")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.025997043, 2.089676, 0.009406805)
+shape = SubResource("CapsuleShape3D_ofe3y")
 
-[node name="MeshInstancePirate" type="MeshInstance3D" parent="Pirate"]
-transform = Transform3D(1, 0, 5.9604645e-08, 0, 0.9999998, 0, -5.9604645e-08, 0, 1, 0, 0, 0)
+[node name="MeshInstancePirate" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 1.1920929e-07, 0, 2, 0, -1.1920929e-07, 0, 2, -0.51018465, 0, 1.7715292)
 mesh = SubResource("ArrayMesh_np8xe")
 
-[node name="MeshIntanceSword" type="MeshInstance3D" parent="Pirate"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.31181243, 0.6228051, -0.9551205)
+[node name="MeshIntanceSword" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0, 2, -1.1477947, 1.2276665, -0.1515221)
 mesh = SubResource("ArrayMesh_6egap")
 
-[node name="AreaInteracao" type="Area3D" parent="Pirate"]
-transform = Transform3D(1.5, 0, 0, 0, 1.4947786, -0.12504716, 0, 0.12504716, 1.4947786, 0, 0, 0)
+[node name="AreaInteracao" type="Area3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.4912977, -0.20841195, 0, 0.20841195, 2.4912977, 0, 0, 2.1378362)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pirate/AreaInteracao"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.26176786, 0.75559866, -0.9888621)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="AreaInteracao"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 2.2351742e-08, 0, -2.2351742e-08, 1.5, -0.010274363, 0.78195035, -0.6738628)
 shape = SubResource("BoxShape3D_ofe3y")
