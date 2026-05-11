@@ -5,7 +5,10 @@ const JUMP_VELOCITY = 4.5
 
 var usando_canhao = false
 var navio_referencia = null
+<<<<<<< HEAD
 var objeto_interagido = null
+=======
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 
 var municao_player = 3
 var max_municao = 3
@@ -85,8 +88,12 @@ func interagir_com_objetos():
 			if alvo.has_method("get_navio"):
 				navio_referencia = alvo.get_navio()
 			
+<<<<<<< HEAD
 			alvo.assumir_controle(self)
 			objeto_interagido = alvo
+=======
+			alvo.assumir_controle(self )
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 			usando_canhao = true
 			return
 

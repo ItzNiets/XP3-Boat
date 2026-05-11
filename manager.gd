@@ -35,12 +35,20 @@ var lobby_label: Label
 # --- Pause ---
 var _pause_canvas: CanvasLayer
 var _pause_panel: Control
+<<<<<<< HEAD
 var _pause_selection := 0 # 0 = Continuar, 1 = Reiniciar, 2 = Menu
+=======
+var _pause_selection := 0  # 0 = Continuar, 1 = Reiniciar, 2 = Menu
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 var _pause_labels: Array[Label] = []
 var _jogo_acabou := false
 
 func _ready() -> void:
+<<<<<<< HEAD
 	process_mode = Node.PROCESS_MODE_ALWAYS # Manager funciona mesmo pausado
+=======
+	process_mode = Node.PROCESS_MODE_ALWAYS  # Manager funciona mesmo pausado
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 	_setup_inputs()
 	_reset_state()
 	call_deferred("_find_pirates")
@@ -63,6 +71,7 @@ func _reset_state():
 
 func _setup_inputs() -> void:
 	var defs = [
+<<<<<<< HEAD
 		["p1_up", true, KEY_W, -1, -1, 0.0],
 		["p1_down", true, KEY_S, -1, -1, 0.0],
 		["p1_left", true, KEY_A, -1, -1, 0.0],
@@ -73,6 +82,18 @@ func _setup_inputs() -> void:
 		["p2_left", false, -1, 0, JOY_AXIS_LEFT_X, -1.0],
 		["p2_right", false, -1, 0, JOY_AXIS_LEFT_X, 1.0],
 		["p2_jump", false, -1, 0, -1, 0.0],
+=======
+		["p1_up",   true,  KEY_W,    -1, -1,   0.0 ],
+		["p1_down", true,  KEY_S,    -1, -1,   0.0 ],
+		["p1_left", true,  KEY_A,    -1, -1,   0.0 ],
+		["p1_right",true,  KEY_D,    -1, -1,   0.0 ],
+		["p1_jump", true,  KEY_SPACE,-1, -1,   0.0 ],
+		["p2_up",   false, -1,        0, JOY_AXIS_LEFT_Y, -1.0],
+		["p2_down", false, -1,        0, JOY_AXIS_LEFT_Y,  1.0],
+		["p2_left", false, -1,        0, JOY_AXIS_LEFT_X, -1.0],
+		["p2_right",false, -1,        0, JOY_AXIS_LEFT_X,  1.0],
+		["p2_jump", false, -1,        0, -1,   0.0 ],
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 	]
 	for d in defs:
 		var action = d[0]
@@ -122,7 +143,11 @@ func _create_lobby_ui() -> void:
 	lobby_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	lobby_label.add_theme_font_size_override("font_size", 22)
 	lobby_label.add_theme_color_override("font_color", Color(1, 1, 0, 1))
+<<<<<<< HEAD
 	lobby_label.text = "Jogador 1: Aperte ESPAÇO   |   Jogador 2: Aperte X no Controle"
+=======
+	lobby_label.text = "Jogador 1: Aperte ESPACO   |   Jogador 2: Aperte A no Controle"
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 	canvas.add_child(lobby_label)
 
 # --- Pause Menu ---
@@ -203,9 +228,15 @@ func _toggle_pause():
 
 func _confirm_pause_option():
 	match _pause_selection:
+<<<<<<< HEAD
 		0: # Continuar
 			_toggle_pause()
 		1: # Sair do Jogo
+=======
+		0:  # Continuar
+			_toggle_pause()
+		1:  # Sair do Jogo
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 			get_tree().quit()
 
 # --- Input ---
@@ -218,9 +249,15 @@ func _input(event: InputEvent) -> void:
 
 		if is_pause_key or is_pause_btn:
 			if get_tree().paused:
+<<<<<<< HEAD
 				_toggle_pause() # Despausar
 			elif not _jogo_acabou:
 				_toggle_pause() # Pausar
+=======
+				_toggle_pause()  # Despausar
+			elif not _jogo_acabou:
+				_toggle_pause()  # Pausar
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 			return
 
 	# --- Navegação do menu de pause ---
@@ -246,6 +283,7 @@ func _input(event: InputEvent) -> void:
 				_update_pause_selection()
 			elif confirm:
 				_confirm_pause_option()
+<<<<<<< HEAD
 		return # Não processar outros inputs enquanto pausado
 
 
@@ -254,6 +292,17 @@ func _input(event: InputEvent) -> void:
 	if not current_scene or current_scene.name != "World":
 		return
 
+=======
+		return  # Não processar outros inputs enquanto pausado
+
+
+
+	# --- Lobby: jogadores entram ---
+	var current_scene = get_tree().current_scene
+	if not current_scene or current_scene.name != "World":
+		return
+
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 	if not p1_joined and event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_SPACE:
 			p1_joined = true

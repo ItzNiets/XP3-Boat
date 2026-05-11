@@ -26,10 +26,13 @@ func _create_phase_ui() -> void:
 	_canvas.layer = 10
 	add_child(_canvas)
 
+<<<<<<< HEAD
 	# --- INDICADORES (Navegação e Inimigos) ---
 	var indicators = IndicatorsSystem.new()
 	_canvas.add_child(indicators)
 
+=======
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 	# --- ONDA (canto superior direito) ---
 	_onda_label = Label.new()
 	_onda_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)

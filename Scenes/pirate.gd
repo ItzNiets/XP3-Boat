@@ -13,7 +13,10 @@ var _jump_requested := false
 # --- Canhão / Navio ---
 var usando_canhao = false
 var navio_referencia = null
+<<<<<<< HEAD
 var objeto_interagido = null
+=======
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 var municao_player = 3
 var max_municao = 3
 
@@ -126,14 +129,20 @@ func interagir_com_objetos():
 	for area in areas:
 		var alvo = encontrar_script_por_metodo(area, "assumir_controle")
 		if alvo:
+<<<<<<< HEAD
 			if "esta_operando" in alvo and alvo.esta_operando:
 				continue
 				
+=======
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 			if alvo.has_method("get_navio"):
 				navio_referencia = alvo.get_navio()
 
 			alvo.assumir_controle(self)
+<<<<<<< HEAD
 			objeto_interagido = alvo
+=======
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 			usando_canhao = true
 			return
 
@@ -141,10 +150,19 @@ func sair_do_canhao():
 	usando_canhao = false
 	navio_referencia = null
 
+<<<<<<< HEAD
 	if objeto_interagido:
 		if objeto_interagido.has_method("soltar_controle"):
 			objeto_interagido.soltar_controle()
 		objeto_interagido = null
+=======
+	var sensor = $AreaInteracao
+	for area in sensor.get_overlapping_areas():
+		var alvo = encontrar_script_por_metodo(area, "soltar_controle")
+		if alvo:
+			alvo.soltar_controle()
+			break
+>>>>>>> f80d1f395a53eb186b2428575d5f7a5439910f1e
 
 func encontrar_script_por_metodo(no_inicial, metodo):
 	var atual = no_inicial
