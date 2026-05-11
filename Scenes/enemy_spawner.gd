@@ -1,57 +1,97 @@
 extends Node3D
 
-# --- 1. VARIÁVEIS NO TOPO (Sempre fora das funções) ---
-@export var enemy_scene: PackedScene 
-@export var spawn_time: float = 5.0  
-@export var distancia_minima: float = 25.0
+# --- CONFIGURAÇÕES ---
+@export var enemy_scene: PackedScene
+@export var spawn_distance: float = 60.0     # Distância de spawn ao redor do navio
+@export var spawn_interval: float = 1.5       # Intervalo entre spawns individuais
 
-# O @onready procura o player assim que a cena carrega
-@onready var player = get_tree().get_first_node_in_group("player")
+var _navio: Node3D
+var _spawn_timer: Timer
+var _inimigos_para_spawnar := 0
+var _onda_atual := 0
 
-var timer: Timer
-
-# --- 2. CONFIGURAÇÃO INICIAL ---
 func _ready():
-	timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = spawn_time
-	timer.autostart = true
-	timer.timeout.connect(_on_timer_timeout)
-	timer.start()
+	# Timer para spawn em rajadas
+	_spawn_timer = Timer.new()
+	_spawn_timer.one_shot = false
+	_spawn_timer.wait_time = spawn_interval
+	_spawn_timer.timeout.connect(_spawn_one)
+	add_child(_spawn_timer)
 
-func _on_timer_timeout():
-	spawn_enemy()
+	# Conectar aos sinais do Manager
+	Manager.onda_iniciada.connect(_on_onda_iniciada)
+	Manager.fase_terminada.connect(_on_fase_terminada)
 
-# --- 3. LÓGICA DE SPAWN ---
-func spawn_enemy():
-	# Verifica se a cena do inimigo foi carregada no Inspetor
-	if not enemy_scene:
-		print("Erro: Arraste a cena do inimigo para o EnemySpawner!")
+	# Encontrar o navio
+	call_deferred("_find_navio")
+
+func _find_navio() -> void:
+	var root = get_tree().current_scene
+	_navio = _search_navio(root)
+
+func _search_navio(node: Node) -> Node3D:
+	if node is ShipBuoyancy:
+		return node
+	for c in node.get_children():
+		var result = _search_navio(c)
+		if result:
+			return result
+	return null
+
+func _on_onda_iniciada(numero: int) -> void:
+	_onda_atual = numero
+	_inimigos_para_spawnar = Manager.inimigos_na_onda
+	print("Spawner: Preparando ", _inimigos_para_spawnar, " inimigos para onda ", numero)
+	_spawn_timer.start()
+
+func _on_fase_terminada(_vitoria: bool) -> void:
+	_spawn_timer.stop()
+	_inimigos_para_spawnar = 0
+
+func _spawn_one() -> void:
+	if _inimigos_para_spawnar <= 0:
+		_spawn_timer.stop()
 		return
 
-	# Pega todos os Marker3D que são filhos deste nó
-	var todos_pontos = get_children().filter(func(node): return node is Marker3D)
-	
-	# Criamos a lista de pontos que estão longe do player
-	var pontos_validos = []
-	
-	if player:
-		for p in todos_pontos:
-			# Só adiciona o ponto se a distância for maior que a mínima
-			if p.global_position.distance_to(player.global_position) > distancia_minima:
-				pontos_validos.append(p)
-	else:
-		# Se não achou o player, usa todos os pontos para não travar o jogo
-		pontos_validos = todos_pontos
+	if not enemy_scene:
+		print("Erro: Cena do inimigo não configurada!")
+		return
 
-	# Se achou pontos seguros, spawna!
-	if pontos_validos.size() > 0:
-		var ponto_escolhido = pontos_validos[randi() % pontos_validos.size()]
-		var inimigo = enemy_scene.instantiate()
-		
-		# Adiciona na raiz (root) para o inimigo ser independente do spawner
-		get_tree().root.add_child(inimigo)
-		
-		# Posiciona o inimigo no Marker escolhido
-		inimigo.global_position = ponto_escolhido.global_position
-		print("Inimigo spawnado em local seguro: ", ponto_escolhido.name)
+	_inimigos_para_spawnar -= 1
+
+	var inimigo = enemy_scene.instantiate()
+	get_tree().root.add_child(inimigo)
+
+	# Calcular posição de spawn À FRENTE e aos lados do navio
+	var spawn_pos = _calcular_posicao_spawn()
+	inimigo.global_position = spawn_pos
+
+	print("Inimigo spawnado! Restantes: ", _inimigos_para_spawnar)
+
+	if _inimigos_para_spawnar <= 0:
+		_spawn_timer.stop()
+
+func _calcular_posicao_spawn() -> Vector3:
+	var centro := Vector3.ZERO
+	var direcao_frente := Vector3.FORWARD  # Default
+
+	if _navio and is_instance_valid(_navio):
+		centro = _navio.global_position
+		# Pegar a direção que o navio está andando (basis.z)
+		direcao_frente = _navio.global_transform.basis.z.normalized()
+
+	# Spawnar PREDOMINANTEMENTE à frente e aos lados do navio
+	# Ângulo: -90° a +90° em relação à frente (semicírculo frontal)
+	# Isso garante que os inimigos apareçam onde o navio está indo
+	var angulo_offset = randf_range(-PI * 0.7, PI * 0.7)  # -126° a +126° (amplo mas frontal)
+
+	# Calcular direção de spawn rotacionada
+	var direcao_spawn = direcao_frente.rotated(Vector3.UP, angulo_offset)
+
+	# Variar a distância
+	var dist = spawn_distance + randf_range(-15.0, 15.0)
+
+	var pos = centro + direcao_spawn * dist
+	pos.y = 0.5  # Ligeiramente acima da água
+
+	return pos

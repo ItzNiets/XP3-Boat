@@ -9,6 +9,8 @@
 [node name="NodeBullet" type="Node3D"]
 
 [node name="Bullet" type="CharacterBody3D" parent="."]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_nh4wl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet"]

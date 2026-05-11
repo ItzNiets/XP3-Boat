@@ -1,34 +1,42 @@
 extends CharacterBody3D
 
-@export var speed = 20.0 
+@export var speed = 25.0
+@export var gravidade = 14.0
 
-func _physics_process(_delta):
-	# Define a velocidade baseada na direção frontal (Z negativo)
-	var direction = -global_transform.basis.z
-	velocity = direction * speed
-	
+var _vel := Vector3.ZERO
+var _initialized := false
+var _tempo_vida := 0.0
+
+func _ready():
+	collision_layer = 4
+	collision_mask = 2
+
+func _physics_process(delta):
+	# Capturar direção no primeiro frame (quando o transform já está correto)
+	if not _initialized:
+		_vel = -global_transform.basis.z * speed
+		_initialized = true
+
+	# Gravidade
+	_vel.y -= gravidade * delta
+	velocity = _vel
+
 	move_and_slide()
-	
-	# Verifica se houve colisão após o movimento
+
+	# Auto-destruir se abaixo da água ou muito tempo
+	_tempo_vida += delta
+	if global_position.y < -5.0 or _tempo_vida > 8.0:
+		queue_free()
+		return
+
+	# Colisão com inimigos
 	if get_slide_collision_count() > 0:
 		var col = get_slide_collision(0)
 		var body = col.get_collider()
-		
-		# Tenta encontrar a função no próprio objeto ou no pai dele
+
 		if body.has_method("levar_dano"):
 			body.levar_dano(1)
-			print("Bala: Acertei o corpo!")
 		elif body.get_parent() and body.get_parent().has_method("levar_dano"):
 			body.get_parent().levar_dano(1)
-			print("Bala: Acertei o pai do corpo!")
-		else:
-			
-			print("--- DEBUG DE COLISÃO ---")
-			print("Bala bateu em: ", body.name)
-			print("Tipo do objeto: ", body.get_class())
-			print("Script anexado: ", body.get_script())
-			print("Caminho do script: ", body.get_script().resource_path if body.get_script() else "NENHUM SCRIPT")
-			print("------------------------")
-			
-		# Remove a bala após o impacto
+
 		queue_free()
