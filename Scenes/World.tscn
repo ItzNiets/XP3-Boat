@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyl5cjdrtkdx3"]
+[gd_scene load_steps=21 format=3 uid="uid://dyl5cjdrtkdx3"]
 
 [ext_resource type="Script" uid="uid://dbqh0kwgsp6il" path="res://Script/Water.gd" id="2_water"]
 [ext_resource type="PackedScene" uid="uid://c5udd1ncktdba" path="res://ShipConfg.tscn" id="3_q2d71"]
 [ext_resource type="Script" uid="uid://dv37mp62bajbh" path="res://Script/FlyCamera.gd" id="5_flycam"]
-[ext_resource type="Script" uid="uid://cnncf4dhc76qr" path="res://Scenes/pirate.gd" id="5_rwt1y"]
 [ext_resource type="PackedScene" uid="uid://bpnn7tfg4xpn8" path="res://bullet_config.tscn" id="6_7yo87"]
 [ext_resource type="PackedScene" uid="uid://wg8r0e7cbl62" path="res://PirateConfig.tscn" id="6_kn06e"]
 [ext_resource type="PackedScene" uid="uid://de5mgdt6xtq2" path="res://CanhaoConfg.tscn" id="6_uo7di"]
@@ -11,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://cw4r7whud3ylh" path="res://MuniçaoConfig.tscn" id="7_kn06e"]
 [ext_resource type="PackedScene" uid="uid://ypduf6wpxahb" path="res://CanhaoConfgB.tscn" id="8_ti1bm"]
 [ext_resource type="AudioStream" uid="uid://dkl2ocstu2jb7" path="res://Assets/Audio/Sounds/10-Minute Meditation with Peaceful Beach Sounds ｜ Goodful [tIZpNrr0uX8].mp3" id="8_waves"]
+[ext_resource type="Script" uid="uid://uajluw4wy8lo" path="res://canhaoB.gd" id="9_op4cu"]
 [ext_resource type="AudioStream" uid="uid://cr7g106yj0bu3" path="res://Assets/Audio/Sounds/Wind Sounds For Sleeping Wind Sound Effect For Relaxation Study Insomina Tinnitus 10 Minutes [GFABlcMkoPA].mp3" id="9_wind"]
 [ext_resource type="PackedScene" uid="uid://btetkdrfkd3nt" path="res://bullet_configB.tscn" id="10_op4cu"]
 [ext_resource type="PackedScene" uid="uid://bw8sjs85qgdol" path="res://node_timao.tscn" id="11_kwl8l"]
 [ext_resource type="PackedScene" uid="uid://1t44ynfnoxcs" path="res://GUI.tscn" id="14_8l3nt"]
 [ext_resource type="Script" uid="uid://dfn8oneppikkq" path="res://Scenes/enemy_spawner.gd" id="16_xiqgv"]
 [ext_resource type="PackedScene" uid="uid://du1lto7gwvf71" path="res://node_inimigos.tscn" id="17_waglr"]
-[ext_resource type="Script" uid="uid://d01fonn3irn2k" path="res://Script/SailXRay.gd" id="18_xray"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cartoon"]
 sky_top_color = Color(0.2, 0.6, 0.95, 1)
@@ -61,27 +60,16 @@ shadow_bias = 0.05
 shadow_blur = 1.8
 
 [node name="FlyCamera" type="Camera3D" parent="."]
-transform = Transform3D(-4.3711367e-08, -0.8660252, 0.5000004, 0, 0.5000004, 0.8660252, -1, 3.7855145e-08, -2.1855701e-08, 9.135807, 25.097527, -1.9516001)
-fov = 70.0
+transform = Transform3D(1, 0, 0, 0, 0.866, 0.5, 0, -0.5, 0.866, 0, 25, 30)
 script = ExtResource("5_flycam")
-offset = Vector3(11, 20, 0)
 
 [node name="WaterPlane" type="Node3D" parent="."]
 script = ExtResource("2_water")
 
-[node name="NodeShip" parent="." instance=ExtResource("3_q2d71")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041874886, 0.06851292, 0.02127409)
-
-[node name="SailXRay" type="Node3D" parent="NodeShip"]
-script = ExtResource("18_xray")
+[node name="NodeShip" parent="." groups=["player"] instance=ExtResource("3_q2d71")]
 
 [node name="NodePirate" parent="NodeShip" instance=ExtResource("6_kn06e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.610433, 6.231148, -1.8756907)
-script = ExtResource("5_rwt1y")
-
-[node name="NodePirate2" parent="NodeShip" instance=ExtResource("6_kn06e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.319069, 6.6606417, -2.501274)
-script = ExtResource("5_rwt1y")
+transform = Transform3D(1.4959875, 0, 0, 0, 2.0963216, 0, 0, 0, -0.8309845, 0, 13.032095, -2.501274)
 
 [node name="NodeCanhao" parent="NodeShip" instance=ExtResource("6_uo7di")]
 transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, -0.99989897, -0.014222617, 0.999937, -3.5998237e-05, -0.011222428, -9.066963, 8.953554, -3.3052068)
@@ -96,18 +84,21 @@ transform = Transform3D(0.011220777, -0.0142239155, 0.99983597, -0.00019561917, 
 bullet_config = ExtResource("6_7yo87")
 
 [node name="CaixadeMuniçao" parent="NodeShip" instance=ExtResource("7_kn06e")]
-transform = Transform3D(3.277613, -3.0910938e-22, 0, -2.1175824e-22, 2.9194555, -2.842171e-14, 0, -2.842171e-14, 2.918701, -1.3724957, 6.5910845, -7.9484673)
+transform = Transform3D(3.277613, -3.0910938e-22, 0, -2.1175824e-22, 2.9194555, -2.842171e-14, 0, -2.842171e-14, 2.918701, -1.3724957, 6.5910845, -5.648545)
 
 [node name="NodeCanhao4" parent="NodeShip" instance=ExtResource("8_ti1bm")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, -3.268714)
+script = ExtResource("9_op4cu")
 bullet_config = ExtResource("10_op4cu")
 
 [node name="NodeCanhao5" parent="NodeShip" instance=ExtResource("8_ti1bm")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, -0.5483804)
+script = ExtResource("9_op4cu")
 bullet_config = ExtResource("10_op4cu")
 
 [node name="NodeCanhao6" parent="NodeShip" instance=ExtResource("8_ti1bm")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.624281, 8.953554, 2.0679464)
+script = ExtResource("9_op4cu")
 bullet_config = ExtResource("10_op4cu")
 
 [node name="NodeTimao" parent="NodeShip" instance=ExtResource("11_kwl8l")]

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="XP3 - Bucaneiros à Deriva"
+config/name="Sprite Baals Existe 2026 03 30 10 30 30"
 run/main_scene="uid://dyl5cjdrtkdx3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
