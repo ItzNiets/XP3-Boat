@@ -4,8 +4,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var usando_canhao = false
-var navio_referencia = null
-var objeto_interagido = null
+var navio_referencia = null 
 
 var municao_player = 3
 var max_municao = 3
@@ -34,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("ui_right"):
 		input_dir = Vector2(1, 0)
 
-	var direction := (transform.basis * Vector3(input_dir.x, 1, input_dir.y)).normalized()
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -58,6 +57,7 @@ func _input(event):
 
 	# --- CONTROLE DO NAVIO (CORRIGIDO) ---
 	if usando_canhao and navio_referencia:
+		
 		if event.is_action_pressed("ui_up"):
 			navio_referencia.comando_acelerar()
 			
@@ -65,7 +65,7 @@ func _input(event):
 			navio_referencia.comando_parar()
 		
 		# VIRAR FIXO (90 GRAUS)
-		if event.is_action_pressed("ui_left"):
+		if event.is_action_pressed("ui_left"): 
 			navio_referencia.comando_virar_fixo(1)
 			 # Gira +90 graus
 			
@@ -79,14 +79,10 @@ func interagir_com_objetos():
 	for area in areas:
 		var alvo = encontrar_script_por_metodo(area, "assumir_controle")
 		if alvo:
-			if "esta_operando" in alvo and alvo.esta_operando:
-				continue
-				
 			if alvo.has_method("get_navio"):
 				navio_referencia = alvo.get_navio()
 			
 			alvo.assumir_controle(self)
-			objeto_interagido = alvo
 			usando_canhao = true
 			return
 
@@ -94,10 +90,12 @@ func sair_do_canhao():
 	usando_canhao = false
 	navio_referencia = null
 	
-	if objeto_interagido:
-		if objeto_interagido.has_method("soltar_controle"):
-			objeto_interagido.soltar_controle()
-		objeto_interagido = null
+	var sensor = $AreaInteracao
+	for area in sensor.get_overlapping_areas():
+		var alvo = encontrar_script_por_metodo(area, "soltar_controle")
+		if alvo:
+			alvo.soltar_controle()
+			break
 
 func tentar_recarregar_estoque():
 	var sensor = $AreaInteracao
@@ -116,7 +114,7 @@ func tentar_recarregar_estoque():
 func encontrar_script_por_metodo(no_inicial, metodo):
 	var atual = no_inicial
 	while atual != null:
-		if atual.has_method(metodo):
+		if atual.has_method(metodo): 
 			return atual
 		atual = atual.get_parent()
 	return null
